@@ -12,7 +12,7 @@ const loadPhones = () => {
         .then(data => displayPhones(data.data));
 }
 
-// =============display data===============
+// display data phone name and brand
 const displayPhones = (phones) => {
     console.log(phones);
     const searchResult = document.getElementById('search-result');
@@ -34,6 +34,7 @@ const displayPhones = (phones) => {
 
     });
 }
+// load phone details id  
 const loadphoneDetails = id => {
     console.log(id)
     const url = ` https://openapi.programming-hero.com/api/phone/${id}`;
@@ -42,6 +43,20 @@ const loadphoneDetails = id => {
         .then(data => displayPhoneDetails(data.data))
 
 }
+// display phone details  
 const displayPhoneDetails = (phone) => {
-    console.log(phone)
+    console.log(phone);
+    const phoneDetails = document.getElementById('phone-detials');
+    const div = document.createElement('div');
+    div.classList.add('card')
+    div.innerHTML = `
+    <img src="${phone.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text text-center fw-bold">Release-date: ${phone.releaseDate}</p>
+        <p class="card-text text-center fw-bold">Display: ${phone.mainFeatures.displaySize}</p>
+        <p class="card-text text-center fw-bold">Processor: ${phone.mainFeatures.chipSet}</p>
+        <p class="card-text text-center fw-bold">Storage: ${phone.mainFeatures.storage}</p>
+            `;
+    phoneDetails.appendChild(div);
+
 }
