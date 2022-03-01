@@ -21,12 +21,12 @@ const displayPhones = (phones) => {
         const div = document.createElement('div');
         div.classList.add('col')
         div.innerHTML = ` 
-        <div class="card">
-        <img height="450px" src="${phone.image}" class="card-img-top" alt="...">
+        <div class="card p-3 m-3">
+        <img src="${phone.image}" class="card-img-top w-75 mx-auto" alt="...">
         <div class="card-body">
             <h5 class="card-title">Phone_name: ${phone.phone_name}</h5>
-            <p class="card-text">Brand: ${phone.brand}</p>
-            <button onclick="loadphoneDetails('${phone.slug}')">Details</button>
+            <p class="card-text fw-bold">Brand: ${phone.brand}</p>
+            <button class="py-1 px-3 text-white rounded-pill bg-success" onclick="loadphoneDetails('${phone.slug}')">Details</button>
         </div>
     </div>
     `;
@@ -40,9 +40,11 @@ const loadphoneDetails = id => {
     const url = ` https://openapi.programming-hero.com/api/phone/${id}`;
     fetch(url)
         .then(res => res.json())
-        .then(data => displayPhoneDetails(data.data))
-
+        .then(data => displayPhoneDetails(data.data));
 }
+
+
+
 // display phone details  
 const displayPhoneDetails = (phone) => {
     console.log(phone);
@@ -50,12 +52,15 @@ const displayPhoneDetails = (phone) => {
     const div = document.createElement('div');
     div.classList.add('card')
     div.innerHTML = `
-    <img src="${phone.image}" class="card-img-top" alt="...">
+    <img src="${phone.image}" class="card-img-top w-75 p-4 mx-auto" alt="...">
     <div class="card-body">
         <p class="card-text text-center fw-bold">Release-date: ${phone.releaseDate}</p>
         <p class="card-text text-center fw-bold">Display: ${phone.mainFeatures.displaySize}</p>
         <p class="card-text text-center fw-bold">Processor: ${phone.mainFeatures.chipSet}</p>
         <p class="card-text text-center fw-bold">Storage: ${phone.mainFeatures.storage}</p>
+        <p class="card-text text-center fw-bold">Sensors: ${phone.mainFeatures.sensors}</p>
+        <p class="card-text text-center fw-bold">Other: ${phone?.others?.WLAN} <br> Bluetooth: ${phone?.others?.Bluetooth}<br>GPS: ${phone?.others?.GPS}<br> NFC: ${phone?.others?.NFC}<br>Radio: ${phone?.others?.Radio}<br>SBS: ${phone?.others?.SBS}</p>
+        
             `;
     phoneDetails.appendChild(div);
 
