@@ -22,15 +22,26 @@ const displayPhones = (phones) => {
         div.classList.add('col')
         div.innerHTML = ` 
         <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <img height="450px" src="${phone.image}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.</p>
+            <h5 class="card-title">Phone_name: ${phone.phone_name}</h5>
+            <p class="card-text">Brand: ${phone.brand}</p>
+            <button onclick="loadphoneDetails('${phone.slug}')">Details</button>
         </div>
     </div>
     `;
-        searchResult.appendChild(div)
+        searchResult.appendChild(div);
 
     });
+}
+const loadphoneDetails = id => {
+    console.log(id)
+    const url = ` https://openapi.programming-hero.com/api/phone/${id}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayPhoneDetails(data.data))
+
+}
+const displayPhoneDetails = (phone) => {
+    console.log(phone)
 }
