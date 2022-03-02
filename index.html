@@ -14,6 +14,14 @@
         #spinner {
             display: none;
         }
+
+        .notify {
+            display: none;
+        }
+
+        #more {
+            display: none;
+        }
     </style>
 
 </head>
@@ -28,6 +36,13 @@
         <button onclick="loadPhones()" class="btn btn-outline-secondary" type="button"
             id="search-button">Button</button>
     </div>
+    <!-- Error Message -->
+    <div class="text-center ">
+        <p id="no-found" class="notify"> search your phone</p>
+
+    </div>
+
+
     <!-- spinner add  -->
     <div class="d-flex justify-content-center">
         <button id="spinner" class="btn btn-primary" type="button" disabled>
