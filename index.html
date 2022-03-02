@@ -10,6 +10,11 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>Best phone</title>
+    <style>
+        #spinner {
+            display: none;
+        }
+    </style>
 
 </head>
 
@@ -22,6 +27,13 @@
             aria-label="Find your best phones" aria-describedby="button-addon2">
         <button onclick="loadPhones()" class="btn btn-outline-secondary" type="button"
             id="search-button">Button</button>
+    </div>
+    <!-- spinner add  -->
+    <div class="d-flex justify-content-center">
+        <button id="spinner" class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+        </button>
     </div>
 
     <!-- display singal phone details   -->

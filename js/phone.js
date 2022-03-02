@@ -1,8 +1,17 @@
+// Add spinner  
+const toggleSpinn = displaySpin => {
+    document.getElementById('spinner').style.display = displaySpin;
+
+}
+
 const loadPhones = () => {
     const searchField = document.getElementById('search-input');
     const searchText = searchField.value;
+    // display spinner  
+    toggleSpinn('block');
     console.log(searchText);
-    searchField.value = '';
+    searchField.value = ''
+
 
     // ----------------load Data -----------------
     const url = (` https://openapi.programming-hero.com/api/phones?search=${searchText}`);
@@ -16,6 +25,7 @@ const loadPhones = () => {
 const displayPhones = (phones) => {
     console.log(phones);
     const searchResult = document.getElementById('search-result');
+    searchResult.textContent = '';
     phones.forEach(phone => {
         console.log(phone);
         const div = document.createElement('div');
@@ -33,6 +43,8 @@ const displayPhones = (phones) => {
         searchResult.appendChild(div);
 
     });
+    // stop spinner  
+    toggleSpinn('none');
 }
 // load phone details id  
 const loadphoneDetails = id => {
